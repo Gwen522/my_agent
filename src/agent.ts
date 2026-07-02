@@ -5,12 +5,28 @@ export class ChatAgent {
     private systemMessage: string; // 系统消息(角色设定)
     private history: (HumanMessage | AIMessage)[] = [];
 
-    constructor(systemMessage = "你是一个有帮助的助手。") {
+    constructor(systemMessage: string, profile?: Record<string, string>, aiprofile?: Record<string, string>) {
         this.model = new ChatOllama({
             model: "qwen2.5",
             temperature: 0.7,
         });
-        this.systemMessage = systemMessage;
+        // 把用户画像和 AI 画像拼到 SystemPrompt 后面
+        const parts: string[] = [];
+        if (profile && Object.keys(profile).length > 0) {
+            const userInfo = Object.entries(profile)
+                .map(([k, v]) => `${k}: ${v}`)
+                .join("，");
+            parts.push(`用户信息：${userInfo}`);
+        }
+        if (aiprofile && Object.keys(aiprofile).length > 0) {
+            const aiInfo = Object.entries(aiprofile)
+                .map(([k, v]) => `${k}: ${v}`)
+                .join("，");
+            parts.push(`AI角色设定：${aiInfo}`);
+        }
+        this.systemMessage = parts.length > 0
+            ? `${systemMessage}\n${parts.join("\n")}`
+            : systemMessage;
     }
 
     /** 接收用户消息，返回模型回复的纯文本 */
@@ -27,5 +43,13 @@ export class ChatAgent {
         this.history.push(new AIMessage(response.content as string));
 
         return response.content as string;
+    }
+    // 向外暴露历史记录
+    getHistory(): (HumanMessage | AIMessage)[] {
+        return this.history;
+    }
+    // 恢复历史记录
+    loadHistory(history: (HumanMessage | AIMessage)[]): void {
+        this.history = history;
     }
 }

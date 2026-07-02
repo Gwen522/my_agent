@@ -6,6 +6,9 @@
   "main": "index.js",
   "scripts": {
     "start": "tsx src/index.ts",
+    "start:real": "USE_PROD_DATA=true tsx src/index.ts",
+    "reset": "tsx src/reset.ts",
+    "reset:real": "USE_PROD_DATA=true tsx src/reset.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
