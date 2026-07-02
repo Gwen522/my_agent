@@ -3,7 +3,7 @@
 | 编号 | 需求 | 状态 |
 |------|------|------|
 | [001](./requirements/001-hello-agent.md) | 项目初始化 + Hello Agent（Ollama 本地 Qwen） | ✅ 已完成 |
-| 002 | 接入云端 API Model（OpenAI 等） | 待定 |
-| 003 | 多模型配置与切换 | 待定 |
+| [002](./requirements/002-loop-chat.md) | 终端循环对话 + ChatAgent 封装 | ✅ 已完成 |
+| 003 | System Prompt / 角色设定 | 待定 |
 | 004 | 会话记忆 | 待定 |
-| 005 | 日记生成 | 待定 |
+| 005 | Web UI | 待定 |
