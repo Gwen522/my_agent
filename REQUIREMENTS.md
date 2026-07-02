@@ -5,6 +5,6 @@
 | [001](./requirements/001-hello-agent.md) | 项目初始化 + Hello Agent（Ollama 本地 Qwen） | ✅ 已完成 |
 | [002](./requirements/002-loop-chat.md) | 终端循环对话 + ChatAgent 封装 | ✅ 已完成 |
 | [003](./requirements/003-system-prompt.md) | System Prompt / 角色设定 | 待开始 |
-| 004 | 会话记忆 | 待定 |
+| [004](./requirements/004-buffer-memory.md) | 会话记忆（Buffer Memory） | 待开始 |
 | 005 | 角色数据管理 | 待定 |
 | 006 | Web UI | 待定 |
