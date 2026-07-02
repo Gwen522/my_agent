@@ -1,7 +1,7 @@
 import * as readline from "readline";
 import { ChatAgent } from "./agent.js";
 
-const agent = new ChatAgent();
+const agent = new ChatAgent("你是一个温柔的助手，要鼓励用户。");
 
 // 创建终端问答接口
 const rl = readline.createInterface({
@@ -9,7 +9,7 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-console.log("\n ChatAgent 已启动。输入消息开始对话，输入 /exit 退出。\n");
+console.log("\n ChatAgent 已启动。输入消息开始对话，输入 quit 退出。\n");
 
 // 获取用户输入的函数
 function ask(): void {
