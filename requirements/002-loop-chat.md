@@ -55,16 +55,6 @@ npx tsx src/index.ts
 ```
 多轮对话正常，`/exit` 退出 → 完成。
 
-## 涉及技术解释（教学用）
-
-| 技术 | 是什么 | 在这个需求里的作用 |
-|------|--------|-------------------|
-| **类封装** | OOP 基本概念，把数据和方法打包成一个整体 | 把模型实例和对话方法封进 `ChatAgent`，对外只暴露 `.chat()` |
-| **readline 模块** | Node.js 内置模块，从终端逐行读取用户输入 | 实现"等待用户输入 → 处理 → 再等待"的循环 |
-| **readline.createInterface** | readline 的工厂方法，创建一个问答接口 | 绑定 `process.stdin`（输入流）和 `process.stdout`（输出流） |
-| **async/await + 循环** | JS 异步控制流，`.question()` 返回 Promise，用 await 暂停等输入 | 避免回调地狱，让循环代码读起来像同步代码 |
-| **agent.ts vs index.ts** | 业务层 vs 展现层分离 | 后续写 Web UI 时 `agent.ts` 零改动直接复用 |
-
 ## 验收标准
 
 - [ ] `npx tsx src/index.ts` 启动后能持续对话

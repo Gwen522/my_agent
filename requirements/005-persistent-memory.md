@@ -134,19 +134,6 @@ quit
 npm run reset                   # 只清空 data_test/recent.json，画像保留
 ```
 
-## 涉及技术解释（教学用）
-
-| 技术 | 是什么 | 在这个需求里的作用 |
-|------|--------|-------------------|
-| **Node.js `fs` 模块** | 操作文件系统（读/写/删/建目录） | 存用户画像、AI 画像和 recent 到磁盘 |
-| **JSON.stringify / parse** | JS 对象 ↔ JSON 字符串互转 | 把 Message 对象序列化存文件，再反序列化读取 |
-| **`fs.existsSync`** | 检查文件/目录是否存在 | 首次运行时 data_test/ 不存在，需要自动创建 |
-| **`fs.mkdirSync`** | 创建目录，`{ recursive: true }` 自动创建父目录 | 第一次存文件时确保 `data_test/` 存在 |
-| **`Array.slice(-N)`** | 截取数组最后 N 个元素 | 只保留最近 `MAX_RECENT_MESSAGES` 条消息，控制文件大小 |
-| **配置文件 `config.ts`** | 把路径常量和可调参数集中管理 | 路径和 N 值只在一处改 |
-| **环境变量 `process.env`** | Node.js 读取系统环境变量的方式 | 通过 `USE_PROD_DATA=true` 切换数据目录 |
-| **三层记忆架构** | 短期缓存 + 中期摘要 + 长期检索 | 分层解决「全记住 vs 上下文爆炸」的矛盾 |
-
 ## 验收标准
 
 - [ ] `npm start` 首次运行自动创建 `data_test/` 目录

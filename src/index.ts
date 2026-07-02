@@ -36,8 +36,11 @@ function ask(): void {
             return;
         }
 
-        const reply = await agent.chat(input);
-        console.log("AI:", reply, "\n");
+        console.log("AI: ");
+        for await (const piece of agent.chatStream(input)) {
+            process.stdout.write(piece); // 输出流式内容
+        }
+        console.log("\n"); // 一轮结束后再手动换行
         ask(); // 递归——再问下一轮
     });
 }

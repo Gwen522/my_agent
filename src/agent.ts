@@ -38,11 +38,30 @@ export class ChatAgent {
             new HumanMessage(userInput),    // 用户输入
         ];
         const response = await this.model.invoke(messages);
-
+        // 更新历史
         this.history.push(new HumanMessage(userInput));
         this.history.push(new AIMessage(response.content as string));
 
         return response.content as string;
+    }
+    // 流式输出
+    async *chatStream(userInput: string): AsyncGenerator<string> {
+        const messages = [
+            new SystemMessage(this.systemMessage),
+            ...this.history,
+            new HumanMessage(userInput),
+        ];
+        // 建立流连接，并返回流。
+        const stream = await this.model.stream(messages);
+        let fullReply = "";
+        // 读取流,流上每一个chunk都会触发这个回调
+        for await (const chunk of stream) {
+            const piece = chunk.content as string
+            fullReply += piece;
+            yield piece;
+        }
+        this.history.push(new HumanMessage(userInput));
+        this.history.push(new AIMessage(fullReply));
     }
     // 向外暴露历史记录
     getHistory(): (HumanMessage | AIMessage)[] {

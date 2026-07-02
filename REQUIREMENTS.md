@@ -6,5 +6,5 @@
 | [002](./requirements/002-loop-chat.md) | 终端循环对话 + ChatAgent 封装 | ✅ 已完成 |
 | [003](./requirements/003-system-prompt.md) | System Prompt / 角色设定 | ✅ 已完成 |
 | [004](./requirements/004-buffer-memory.md) | 会话记忆（Buffer Memory） | ✅ 已完成 |
-| [005](./requirements/005-persistent-memory.md) | 持久化记忆（画像 + 会话存储） | 待开始 |
-| 006 | Web UI | 待定 |
+| [005](./requirements/005-persistent-memory.md) | 持久化记忆（画像 + 会话存储） | ✅ 已完成 |
+| [006](./requirements/006-streaming-output.md) | 流式输出（Streaming） | 待开始 |

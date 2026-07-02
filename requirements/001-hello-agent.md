@@ -52,18 +52,6 @@ npx tsx src/index.ts
 ```
 终端看到模型的回复 → 需求完成。
 
-## 涉及技术解释（教学用）
-
-| 技术 | 是什么 | 在这个需求里的作用 |
-|------|--------|-------------------|
-| **LangChain.js** | AI 应用开发框架，提供统一的模型接口、工具调用、记忆等能力 | 整个项目的 Agent 骨架 |
-| **@langchain/core** | LangChain 的核心包，定义了 ChatModel、Message 等基础类型 | 所有其他包依赖的基础层 |
-| **@langchain/ollama** | LangChain 对接本地 Ollama 服务的连接器 | 让 LangChain 能调用你本地的 Qwen 模型 |
-| **ChatOllama** | LangChain 里的一个 Chat Model 实现，封装了对 Ollama API 的调用 | 创建模型实例，发送消息、接收回复 |
-| **.invoke()** | ChatModel 上的核心方法，发送消息并等待完整回复 | 最简单的调用方式（同步等待） |
-| **tsx** | TypeScript 直接执行工具（基于 esbuild），免编译 | 直接运行 `.ts` 文件，不需要先 `tsc` 编译 |
-| **dotenv** | 读取 `.env` 文件到环境变量 | 管理 API Key 等敏感配置（当前需求用不到，先装好备用） |
-
 ## 验收标准
 
 - [ ] `npx tsx src/index.ts` 运行不报错
