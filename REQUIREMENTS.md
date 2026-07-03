@@ -8,4 +8,5 @@
 | [004](./requirements/004-buffer-memory.md) | 会话记忆（Buffer Memory） | ✅ 已完成 |
 | [005](./requirements/005-persistent-memory.md) | 持久化记忆（画像 + 会话存储） | ✅ 已完成 |
 | [006](./requirements/006-streaming-output.md) | 流式输出（Streaming） | ✅ 已完成 |
-| [007](./requirements/007-model-config.md) | 模型可配置化（配置 + 工厂 + 运行时切换） | 待开始 |
+| [007](./requirements/007-tool-calling.md) | 工具调用（Tool Calling） | ✅ 已完成 |
+| [009](./requirements/007-model-config.md) | 模型可配置化（配置 + 工厂 + 运行时切换） | 待开始 |

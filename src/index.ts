@@ -13,7 +13,6 @@ const aiPprofile = loadAiProfile();
 const recentMessages = loadRecent();
 
 const agent = new ChatAgent(
-    "你是一个 helpful assistant。",
     userProfile,
     aiPprofile
 );
@@ -31,14 +30,15 @@ function ask(): void {
     rl.question("你: ", async (input: string) => {
         if (input.trim() === "quit") {
             saveRecent(agent.getHistory()); // 退出前保存最近历史
-            console.log("👋 再见！");
+            console.log(" 再见！");
             rl.close();
             return;
         }
 
         console.log("AI: ");
+        // 输出流式内容
         for await (const piece of agent.chatStream(input)) {
-            process.stdout.write(piece); // 输出流式内容
+            process.stdout.write(piece); 
         }
         console.log("\n"); // 一轮结束后再手动换行
         ask(); // 递归——再问下一轮
