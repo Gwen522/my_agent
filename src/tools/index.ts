@@ -1,3 +1,2 @@
-import { getCurrentTimeTool } from "./getCurrentTime.js";
-
-export const allTools = [getCurrentTimeTool];
+import { calcTool } from "./calc"
+export const allTools = [calcTool];
