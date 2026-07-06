@@ -1,2 +1,2 @@
-import { calcTool } from "./calc"
+import { calcTool } from "./calc.js";
 export const allTools = [calcTool];
